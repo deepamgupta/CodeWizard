@@ -1,4 +1,7 @@
 
 <div class="container">
-    <h1 class="h1"> Hello CodeWizard</h1>
+    $if session["user"] == None:
+        <h1>Welcome to CodeWizard</h1>
+    $else:
+        <h1>Hello $session["user"]["name"]</h1>
 </div>
