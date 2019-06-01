@@ -8,7 +8,7 @@ $(document).ready(function () {
 
 
     //For Registeration
-    $(document).on("submit", "#register-form", function (e) {
+    $(document).on("submit", "#register-form", function (e) { //'e' means any event
         e.preventDefault();
         // console.log("form submitted");
 
@@ -64,7 +64,22 @@ $(document).ready(function () {
                     alert("Something went wrong!!")
                 }
             }
-
         })
     })
+
+    //For Posts
+    $(document).on("submit", "#post-activity", function (e) {
+        e.preventDefault();
+
+        let form = $(this).serialize()
+
+        $.ajax({
+            url: '/post-activity',
+            type: 'POST',
+            data: form,
+            success: function (res) {
+                console.log(res)
+            }
+        });
+    });
 });
