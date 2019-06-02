@@ -1,72 +1,75 @@
+$def with (posts)
 
+$if session["user"] == None:
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <h1>Welcome to CodeWizard</h1>
+    </div>
 
-    $if session["user"] == None:
-        <br>
-        <br>
-        <br>
-        <div class="container">
-          <h1>Welcome to CodeWizard</h1>
-        </div>
+$else:
+    <!-- The sidebar -->
+    <div class="sidebar">
+        <a class="active" href="#home">Home</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+    </div>
 
-    $else:
-        <!-- The sidebar -->
-        <div class="sidebar">
-          <a class="active" href="#home">Home</a>
-          <a href="#news">News</a>
-          <a href="#contact">Contact</a>
-          <a href="#about">About</a>
-        </div>
+    <!-- Page content -->
+    <div class="content">
+        <div class="col-md-6 post-box">
+            <div class="form-group">
+                <form id="post-activity">
+                    <label for="exampleFormControlTextarea3">Rounded corners</label>
+                    <textarea class="form-control post-input" id="exampleFormControlTextarea3" rows="7" name="content"
+                              placeholder="What's new $session['user']['name']?"></textarea>
+                    <button type="submit" id="post-button" class="btn btn-info btn-raised">Post</button>
+                </form>
+            </div>
 
-        <!-- Page content -->
-        <div class="content">
-          <div class="col-md-6 post-box">
-              <div class="form-group">
-                  <form id="post-activity">
-                      <label for="exampleFormControlTextarea3">Rounded corners</label>
-                      <textarea class="form-control post-input" id="exampleFormControlTextarea3" rows="7" name="content"
-                                placeholder="What's new $session['user']['name']?"></textarea>
-                      <button type="submit" id="post-button" class="btn btn-info btn-raised">Post</button>
-                  </form>
-              </div>
-
+            $for post in posts:
 
 
             <!-- Card -->
             <div class="card">
 
-              <!-- Card image -->
-<!--              <div class="view overlay">-->
-<!--                <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">-->
-<!--                <a href="#!">-->
-<!--                  <div class="mask rgba-white-slight"></div>-->
-<!--                </a>-->
-<!--              </div>-->
+                <!-- Card image -->
+                <!--              <div class="view overlay">-->
+                <!--                <img class="card-img-top" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">-->
+                <!--                <a href="#!">-->
+                <!--                  <div class="mask rgba-white-slight"></div>-->
+                <!--                </a>-->
+                <!--              </div>-->
 
-              <!-- Card content -->
-              <div class="card-body">
+                <!-- Card content -->
+                <div class="card-body">
 
-                <!-- Title -->
-                <h4 class="card-title">Hello $session["user"]["name"]</h4>
-                <!-- Text -->
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <!-- Button -->
+                    <!-- Title -->
+                    <h4 class="card-title">Hello $session["user"]["name"]</h4>
+                    <!-- Text -->
+                    <p class="card-text">$post["content"]</p>
+                    <!-- Button -->
 
-                <a class="btn-floating btn-lg btn-fb" type="button" role="button"><i class="fab fa-facebook-f"></i></a>
-                <!--Twitter-->
-                <a class="btn-floating btn-lg btn-tw" type="button" role="button"><i class="fab fa-twitter"></i></a>
-                <!--Google +-->
-                <a class="btn-floating btn-lg btn-gplus" type="button" role="button"><i class="fab fa-google-plus-g"></i></a>
+                    <a class="btn-floating btn-lg btn-fb" type="button" role="button"><i class="fab fa-facebook-f"></i></a>
+                    <!--Twitter-->
+                    <a class="btn-floating btn-lg btn-tw" type="button" role="button"><i class="fab fa-twitter"></i></a>
+                    <!--Google +-->
+                    <a class="btn-floating btn-lg btn-gplus" type="button" role="button"><i class="fab fa-google-plus-g"></i></a>
 
-
-
-              </div>
+                </div>
 
             </div>
             <!-- Card -->
+            <br>
+            <br>
 
-          </div>
+
 
         </div>
+
+    </div>
 
 
 
